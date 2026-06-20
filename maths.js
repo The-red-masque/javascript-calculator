@@ -1,0 +1,29 @@
+let numbers = [];
+const result = numbers.reduce(getSum, 0);
+let n1 = 0;
+let n2 = 0;
+let operator;
+
+function add      (n1,n2) {numbers.push(n1+n2);}
+function subtract (n1,n2) {numbers.push(n1-n2);}
+function multiply (n1,n2) {numbers.push(n1*n2);}
+function divide   (n1,n2) {numbers.push(n1/n2);}
+function clearNumbers ()  {numbers = [];}
+function operate  (n1,operator,n2) {
+  if (operator === "+") {
+    add(n1,n2);
+  }
+  else if (operator === "-"){
+    subtract(n1,n2);
+  }
+  else if (operator === "/") {
+    divide(n1,n2);
+  }
+  else if (operator === "*"){
+    multiply(n1,n2);
+  } else {console.log("OOPS!");}
+}
+
+function getSum(total, num) {
+  return total + num;
+}
