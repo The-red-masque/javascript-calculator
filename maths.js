@@ -25,5 +25,5 @@ function operate  (n1,operator,n2) {
 }
 
 function getSum(total, num) {
-  return total + num;
+  return total + Math.round(num);
 }

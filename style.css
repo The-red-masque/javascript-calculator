@@ -1,0 +1,11 @@
+body {
+  background-color:blue;
+  color: white;
+}
+.number-button {
+  background:white;
+  color:black;
+}
+.operation-button {
+  background-color:red;
+}
