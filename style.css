@@ -3,9 +3,17 @@ body {
   color: white;
 }
 .number-button {
+  flex: 1 1 auto;
   background:white;
   color:black;
 }
+.digit-container{
+  display:flex;
+  flex-flow:column-reverse wrap;
+  gap:1%;
+}
 .operation-button {
-  background-color:red;
+  display: flex;
+  flex-flow: column wrap;
+  background-color: red;
 }
