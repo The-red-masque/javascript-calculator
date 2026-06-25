@@ -4,10 +4,10 @@ body {
 }
 .number-button {
   flex: 1 1 auto;
-  background:white;
-  color:black;
+  background:#dbdad7;
+  color: #323232;
 }
-.digit-container{
+.digit-container {
   display:flex;
   flex-flow:column-reverse wrap;
   gap:1%;
@@ -15,5 +15,6 @@ body {
 .operation-button {
   display: flex;
   flex-flow: column wrap;
-  background-color: red;
+  color: #e8f1f4;
+  background-color: #3f5d8f;
 }
