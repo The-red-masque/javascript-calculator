@@ -7,11 +7,13 @@ body {
   background:#dbdad7;
   color: #323232;
 }
+
 .digit-container {
   display:flex;
   flex-flow:column-reverse wrap;
   gap:1%;
 }
+
 .operation-button {
   display: flex;
   flex-flow: column wrap;
