@@ -9,6 +9,10 @@ const digitDiv = document.createElement("div");
   zeroBtn.textContent = "0";
   zeroBtn.classList.add("number-button");
   digitDiv.appendChild(zeroBtn);
+  const decimalBtn = document.createElement("BUTTON");
+  decimalBtn.textContent = ".";
+  decimalBtn.classList.add("number-button");
+  digitDiv.appendChild(decimalBtn);
   const oneBtn = document.createElement("BUTTON");
     oneBtn.textContent = "1";
     oneBtn.classList.add("number-button");
@@ -45,11 +49,31 @@ const digitDiv = document.createElement("div");
     nineBtn.textContent = "9";
     nineBtn.classList.add("number-button");
   digitDiv.appendChild(nineBtn);
-  const decimalBtn = document.createElement("BUTTON");
-    decimalBtn.textContent = ".";
-    decimalBtn.classList.add("number-button");
-    digitDiv.appendChild(decimalBtn);
 document.body.appendChild(digitDiv);
+
+const operatorDiv = document.createElement("div");
+  operatorDiv.classList.add("operator-container")
+  const equalsBtn = document.createElement("BUTTON");
+    equalsBtn.textContent = "=";
+    equalsBtn.classList = "operator-button";
+  operatorDiv.appendChild(equalsBtn);
+  const plusBtn = document.createElement("BUTTON");
+    plusBtn.textContent = "+";
+    plusBtn.classList = "operator-button";
+  operatorDiv.appendChild(plusBtn);
+  const minusBtn = document.createElement("BUTTON");
+    minusBtn.textContent = "-";
+    minusBtn.classList = "operator-button";
+  operatorDiv.appendChild(minusBtn);
+  const divisionBtn = document.createElement("BUTTON");
+    divisionBtn.textContent = "/";
+    divisionBtn.classList = "operator-button";
+  operatorDiv.appendChild(divisionBtn);
+  const multiplyBtn = document.createElement("BUTTON");
+    multiplyBtn.textContent = "*";
+    multiplyBtn.classList = "operator-button";
+  operatorDiv.appendChild(multiplyBtn);
+document.body.appendChild(operatorDiv);
 
 // Rounding logic
 const roundingLogic = (Math.round(newNumber*(10**roundingPlace)))/(10**roundingPlace);

@@ -6,17 +6,20 @@ body {
   flex: 1 1 auto;
   background:#dbdad7;
   color: #323232;
+  
 }
 
 .digit-container {
   display:flex;
-  flex-flow:column-reverse wrap;
-  gap:1%;
+  flex-flow:column wrap;
 }
-
-.operation-button {
+.operator-container {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow:column-reverse wrap;
+}
+.operator-button {
+  display: flex;
+  flex-flow: column-reverse wrap;
   color: #e8f1f4;
   background-color: #3f5d8f;
 }
