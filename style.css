@@ -1,18 +1,25 @@
 body {
-  background-color:blue;
+  background-color:#141215;
   color: white;
+  font: size 16px;
 }
+/* .calculator {
+  background-color: #141215;
+} */
 .number-button {
   flex: 1 1 auto;
   background:#dbdad7;
   color: #323232;
   
 }
-
+.input-container {
+  display:flex;
+  flex-flow:row nowrap;
+}
 .digit-container {
   /* To the left */
   display:flex;
-  flex-flow:column wrap;
+  flex-flow:row wrap;
 }
 .operator-container {
   /* To the right */

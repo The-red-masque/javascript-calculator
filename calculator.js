@@ -1,17 +1,23 @@
 let numbers = [];
+/* BONUS for me: Create the buttons iteratively.
+let NUMPAD = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
+let operators = ["+", "-", "/", "*"]; */
 const result = numbers.reduce(getSum, 0);
 let n1,operator,n2,newNumber;
 const roundingPlace = 5;
 
-const digitDiv = document.createElement("div");
+const inputContainer = document.createElement("SECTION");
+inputContainer.classList.add("input-container");  //
+
+const digitDiv = document.createElement("DIV");
   digitDiv.classList.add("digit-container");
   const zeroBtn = document.createElement("BUTTON");
-  zeroBtn.textContent = "0";
-  zeroBtn.classList.add("number-button");
+    zeroBtn.textContent = "0";
+    zeroBtn.classList.add("number-button");
   digitDiv.appendChild(zeroBtn);
   const decimalBtn = document.createElement("BUTTON");
-  decimalBtn.textContent = ".";
-  decimalBtn.classList.add("number-button");
+    decimalBtn.textContent = ".";
+    decimalBtn.classList.add("number-button");
   digitDiv.appendChild(decimalBtn);
   const oneBtn = document.createElement("BUTTON");
     oneBtn.textContent = "1";
@@ -49,7 +55,7 @@ const digitDiv = document.createElement("div");
     nineBtn.textContent = "9";
     nineBtn.classList.add("number-button");
   digitDiv.appendChild(nineBtn);
-document.body.appendChild(digitDiv);
+inputContainer.appendChild(digitDiv);
 
 const operatorDiv = document.createElement("div");
   operatorDiv.classList.add("operator-container")
@@ -73,7 +79,8 @@ const operatorDiv = document.createElement("div");
     multiplyBtn.textContent = "*";
     multiplyBtn.classList = "operator-button";
   operatorDiv.appendChild(multiplyBtn);
-document.body.appendChild(operatorDiv);
+inputContainer.appendChild(operatorDiv);
+document.body.appendChild(inputContainer);
 
 // Rounding logic
 const roundingLogic = (Math.round(newNumber*(10**roundingPlace)))/(10**roundingPlace);
