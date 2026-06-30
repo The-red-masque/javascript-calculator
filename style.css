@@ -10,10 +10,12 @@ body {
 }
 
 .digit-container {
+  /* To the left */
   display:flex;
   flex-flow:column wrap;
 }
 .operator-container {
+  /* To the right */
   display: flex;
   flex-flow:column-reverse wrap;
 }
