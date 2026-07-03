@@ -1,7 +1,8 @@
 let numbers = [];
 /* BONUS for me: Create the buttons iteratively. */
-let numpad = ["0", ".", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-let operators = ["+", "-", "/", "*"];
+let numpad = ["9", "8", "7", "6", "5", "4", "3", "2", "1", "0", ".", "C"];
+let operators = ["*", "/", "-", "+"];
+
 const result = numbers.reduce(getSum, 0);
 let n1,operator,n2,newNumber;
 const roundingPlace = 5;
@@ -18,15 +19,15 @@ const digitDiv = document.createElement("DIV");
     digitDiv.appendChild(btn);
   });
   inputContainer.appendChild(digitDiv);
-const operatorDiv = document.createElement("DIV");
-operatorDiv.classList.add("operators-container");
-  operators.forEach(item => {
-    const btn = document.createElement("BUTTON");
-    btn.textContent=item;
-    btn.classList.add("operator-button");
+
+  const operatorDiv = document.createElement("DIV");
+    operatorDiv.classList.add("operators-container");
+    operators.forEach(item => {
+      const btn = document.createElement("BUTTON");
+      btn.textContent=item;
+      btn.classList.add("operator-button");
     operatorDiv.appendChild(btn);
   });
-  
   inputContainer.appendChild(operatorDiv);
 document.body.appendChild(inputContainer);
 

@@ -10,6 +10,7 @@ body {
   flex: 1 1 auto;
   background:#dbdad7;
   color: #323232;
+  width: 33%;
   
 }
 .input-container {
@@ -19,16 +20,16 @@ body {
 .digit-container {
   /* To the left */
   display:flex;
-  flex-flow:row wrap;
+  flex-flow:row-reverse wrap;
 }
 .operator-container {
   /* To the right */
   display: flex;
-  flex-flow:column-reverse wrap;
+  flex-flow:column wrap;
 }
 .operator-button {
   display: flex;
-  flex-flow: column-reverse wrap;
+  /* flex-flow: column-reverse wrap; */
   color: #e8f1f4;
   background-color: #3f5d8f;
 }
