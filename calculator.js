@@ -1,7 +1,7 @@
 let numbers = [];
 /* BONUS for me: Create the buttons iteratively. */
 let numpad = ["9", "8", "7", "6", "5", "4", "3", "2", "1", "0", ".", "C"];
-let operators = ["*", "/", "-", "+"];
+let operators = ["*", "/", "-", "+", "="];
 
 
 const result = numbers.reduce(getSum, 0);
@@ -10,7 +10,7 @@ const roundingPlace = 5;
 const displayContainer = document.createElement("SECTION");
 displayContainer.classList.add("display-container");
 const displayDiv = document.createElement("DIV");
-displayDiv.textContent="The answer is 42.";
+displayDiv.textContent=`${result}`;
 displayContainer.appendChild(displayDiv);
 document.body.appendChild(displayContainer);
 const inputContainer = document.createElement("SECTION");
@@ -35,6 +35,7 @@ function createDigitBtn(item) {
   const btn = document.createElement("BUTTON");
   btn.textContent=item;
   btn.classList.add("number-button");
+  btn.addEventListener("click", function(){console.log(item); })
   digitDiv.appendChild(btn);
 }
 
@@ -42,9 +43,12 @@ function createOperatorBtn(item) {
   const btn = document.createElement("BUTTON");
   btn.textContent=item;
   btn.classList.add("operator-button");
+  btn.addEventListener("click", function(){console.log(item); })
   operatorDiv.appendChild(btn);
 }
-
+// function btnListeners(btn) {
+//   btn.addEventListener("click", function(){console.log(item); })
+// }
 // Rounding logic
 const roundingLogic = (Math.round(newNumber*(10**roundingPlace)))/(10**roundingPlace);
 

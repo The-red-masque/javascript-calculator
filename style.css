@@ -7,29 +7,45 @@ body {
   background-color: #141215;
 } */
 .number-button {
+  display:inherit;
   flex: 1 1 auto;
   background:#dbdad7;
   color: #323232;
-  width: 33%;
-  
+  min-width: 25%;
+  align-items: center;
+  justify-content: center;
+  margin:2px;
+}
+.display-container {
+  background-color: white;
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
 }
 .input-container {
   display:flex;
   flex-flow:row nowrap;
+  gap:1%;
+  margin:10px;
 }
 .digit-container {
   /* To the left */
   display:flex;
   flex-flow:row-reverse wrap;
+
 }
 .operator-container {
   /* To the right */
   display: flex;
   flex-flow:column wrap;
+  width:auto;
 }
 .operator-button {
-  display: flex;
-  /* flex-flow: column-reverse wrap; */
+  display: inherit;
+  flex: 1 1 auto;
   color: #e8f1f4;
   background-color: #3f5d8f;
+  min-width:50px;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
 }
