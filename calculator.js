@@ -1,17 +1,18 @@
-let numbers = [];
-/* BONUS for me: Create the buttons iteratively. */
-let numpad = ["9", "8", "7", "6", "5", "4", "3", "2", "1", "0", ".", "C"];
+let numpad = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, ".", "C"];
 let operators = ["*", "/", "-", "+", "="];
 
 
-const result = numbers.reduce(getSum, 0);
-let n1,operator,n2,newNumber;
+// let result = //numbers.reduce(gettotal, 0);
+
+let total = 0;
+
 const roundingPlace = 5;
+
 const displayContainer = document.createElement("SECTION");
 displayContainer.classList.add("display-container");
 const displayDiv = document.createElement("DIV");
-displayDiv.textContent=`${result}`;
-displayContainer.appendChild(displayDiv);
+  displayDiv.textContent = total;
+  displayContainer.appendChild(displayDiv);
 document.body.appendChild(displayContainer);
 const inputContainer = document.createElement("SECTION");
 inputContainer.classList.add("input-container");
@@ -35,7 +36,11 @@ function createDigitBtn(item) {
   const btn = document.createElement("BUTTON");
   btn.textContent=item;
   btn.classList.add("number-button");
-  btn.addEventListener("click", function(){console.log(item); })
+  btn.addEventListener("click", function() 
+  {
+    console.log(item);
+    n1 = item;
+  })
   digitDiv.appendChild(btn);
 }
 
@@ -43,49 +48,46 @@ function createOperatorBtn(item) {
   const btn = document.createElement("BUTTON");
   btn.textContent=item;
   btn.classList.add("operator-button");
-  btn.addEventListener("click", function(){console.log(item); })
+  btn.addEventListener("click", function(){
+    console.log(item);
+    operator = item;
+  })
   operatorDiv.appendChild(btn);
 }
-// function btnListeners(btn) {
-//   btn.addEventListener("click", function(){console.log(item); })
-// }
+
 // Rounding logic
-const roundingLogic = (Math.round(newNumber*(10**roundingPlace)))/(10**roundingPlace);
+// const roundingLogic = (Math.round(newNumber*(10**roundingPlace)))/(10**roundingPlace);
 
-function add (n1,n2) {
-  newNumber = n1+n2;
+function addition (total,n1) {
+  total = total + n1;
+}
+function subtraction (total,n1) {
+  total = total - n1;
+  return total;
+}
+function multiplication (total,n1) {
+  total = total * n1;
+  return total;
+}
+function division   (total,n1) {
+  total = total / n1;
+  return total;
+}
+if (numpad ==="C") {clearNumbers();}
+function clearNumbers ()  {number = 0;}
 
-  numbers.push((Math.round(newNumber*(10**roundingPlace)))/(10**roundingPlace));
-  //numbers.push(newNumber);
-}
-function subtract (n1,n2) {
-  newNumber = n1-n2;
-  numbers.push((Math.round(newNumber*(10**roundingPlace)))/(10**roundingPlace));
-}
-function multiply (n1,n2) {
-  newNumber = n1 * n2;
-  numbers.push((Math.round(newNumber*(10**roundingPlace)))/(10**roundingPlace));
-}
-function divide   (n1,n2) {
-  newNumber = n1/n2;
-  numbers.push((Math.round(newNumber*(10**roundingPlace)))/(10**roundingPlace));
-}
-function clearNumbers ()  {numbers = [];}
-function operate  (n1,operator,n2) {
+if (operator === "="){operate();} else {alert("Whoops!")}
+function operate  (n1,operator,total) {
   if (operator === "+") {
-    add(n1,n2);
+    addition(n1,total);
   }
   else if (operator === "-"){
-    subtract(n1,n2);
+    subtraction(n1,total);
   }
   else if (operator === "/") {
-    divide(n1,n2);
+    division(n1,total);
   }
   else if (operator === "*"){
-    multiply(n1,n2);
-  } else {alert("Whoops!")}
-}
-
-function getSum(total, num) {
-  return total + Math.round(num);
+    multiplication(n1,total);
+  }// else {alert("Whoops!")}
 }
