@@ -1,7 +1,7 @@
-let numpad = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, ".", "C"];
+let numpad = ["9", "8", "7", "6", "5", "4", "3", "2", "1", "0", ".", "C"];
 let operators = ["*", "/", "-", "+", "="];
-
-let n1;
+let inputArr=[];
+let num = 0;
 let total = 0;
 let operator;
 
@@ -10,7 +10,7 @@ const roundingPlace = 5;
 const displayContainer = document.createElement("SECTION");
 displayContainer.classList.add("display-container");
 const displayDiv = document.createElement("DIV");
-  displayDiv.textContent = total;
+  displayDiv.textContent = `${num}`;
   displayContainer.appendChild(displayDiv);
 document.body.appendChild(displayContainer);
 
@@ -48,11 +48,14 @@ function createDigitBtn(item, parentDiv) {
   const btn = document.createElement("BUTTON");
   btn.textContent=item;
   btn.classList.add("number-button");
-  btn.addEventListener("click", function() 
-  {
-    console.log(item);
-    n1 = item;
-  })
+  /* Collects number by click.*/
+  btn.addEventListener("click", function() {
+    inputArr.push(item)
+    num = inputArr
+      .join()
+      .replace(/,/g, '')
+      return displayDiv.textContent = num;
+})
   parentDiv.appendChild(btn);
 }
 
@@ -70,20 +73,20 @@ function createOperatorBtn(item, parentDiv) {
 // Rounding logic
 // const roundingLogic = (Math.round(newNumber*(10**roundingPlace)))/(10**roundingPlace);
 
-function addition (total,n1) {
-  total = total + n1;
+function addition (total,num) {
+  total = total + num;
   return total;
 }
-function subtraction (total,n1) {
-  total = total - n1;
+function subtraction (total,num) {
+  total = total - num;
   return total;
 }
-function multiplication (total,n1) {
-  total = total * n1;
+function multiplication (total,num) {
+  total = total * num;
   return total;
 }
-function division   (total,n1) {
-  total = total / n1;
+function division   (total,num) {
+  total = total / num;
   return total;
 }
 if (numpad ==="C") {clearNumbers();}
@@ -91,23 +94,23 @@ if (numpad ==="C") {clearNumbers();}
 // Might be incorrect
 function clearNumbers ()  {
   total = 0;
-  n1 = null;
+  num = null;
   operator = null;
-  return total,n1,operator;
+  return total,num,operator;
 }
 
 //if (operator === "="){operate();} else {alert("Whoops!")} // Uncaught ReferenceError: operator is not defined
-function operate  (n1,operator,total) {
+function operate  (num,operator,total) {
   if (operator === "+") {
-    addition(n1,total);
+    addition(num,total);
   }
   else if (operator === "-"){
-    subtraction(n1,total);
+    subtraction(num,total);
   }
   else if (operator === "/") {
-    division(n1,total);
+    division(num,total);
   }
   else if (operator === "*"){
-    multiplication(n1,total);
+    multiplication(num,total);
   }// else {alert("Whoops!")}
 }
