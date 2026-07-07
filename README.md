@@ -11,3 +11,7 @@ A calculator using JavaScript, html, and css.
     - there is a button with a string of the operator.
     - the button has class: operator-button
   - $input \iff clickOnButton \lor keyPress$.
+
+## Bonus
+
+Another abstraction!
