@@ -1,8 +1,8 @@
 let numpad = ["9", "8", "7", "6", "5", "4", "3", "2", "1", "0", ".", "C"];
 let operators = ["*", "/", "-", "+", "="];
 let inputArr=[];
-let num = 0;
-let total = 0;
+let num=0;
+let total=0;
 let operator;
 
 const roundingPlace = 5;
@@ -10,7 +10,7 @@ const roundingPlace = 5;
 const displayContainer = document.createElement("SECTION");
 displayContainer.classList.add("display-container");
 const displayDiv = document.createElement("DIV");
-  displayDiv.textContent = `${num}`;
+  displayDiv.textContent = num;
   displayContainer.appendChild(displayDiv);
 document.body.appendChild(displayContainer);
 
@@ -36,7 +36,7 @@ function generateNumpadButtons(inputContainer) {
 }
 
 function generateOperatorButtons(inputContainer) {
-  const operatorDiv = document.createElement("DIV");
+  const operatorDiv = document.createElement("DIV")  
     operatorDiv.classList.add("operators-container");
     operators.forEach(item => {
       createOperatorBtn(item,operatorDiv);
@@ -44,17 +44,22 @@ function generateOperatorButtons(inputContainer) {
   inputContainer.appendChild(operatorDiv);
 }
 
+
 function createDigitBtn(item, parentDiv) {
   const btn = document.createElement("BUTTON");
   btn.textContent=item;
   btn.classList.add("number-button");
   /* Collects number by click.*/
   btn.addEventListener("click", function() {
+    if (item === "C") {
+      clearNumbers();
+    } else {
     inputArr.push(item)
     num = inputArr
       .join()
       .replace(/,/g, '')
       return displayDiv.textContent = num;
+    }
 })
   parentDiv.appendChild(btn);
 }
@@ -89,14 +94,14 @@ function division   (total,num) {
   total = total / num;
   return total;
 }
-if (numpad ==="C") {clearNumbers();}
 
 // Might be incorrect
 function clearNumbers ()  {
-  total = 0;
-  num = null;
-  operator = null;
-  return total,num,operator;
+      inputArr = [];
+      num = "0";
+      total = "0";
+      operator = null;
+      return displayDiv.textContent = num,total,operator;
 }
 
 //if (operator === "="){operate();} else {alert("Whoops!")} // Uncaught ReferenceError: operator is not defined
