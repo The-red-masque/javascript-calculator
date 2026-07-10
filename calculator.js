@@ -50,17 +50,12 @@ function createDigitBtn(item, parentDiv) {
   btn.textContent=item;
   btn.classList.add("number-button");
   /* Collects number by click.*/
-  btn.addEventListener("click", function() {
-    if (item === "C") {
-      clearNumbers();
-    } else {
-    inputArr.push(item)
-    num = inputArr
-      .join()
-      .replace(/,/g, '')
-      return displayDiv.textContent = num;
-    }
-})
+  item === "C" ? btn.addEventListener("click", clearNumbers)
+  : item === "." ? btn.addEventListener("click", function() {
+    //disable "." input after it has happened once.
+    joinNumbers(inputArr,item)}) 
+  : btn.addEventListener("click", function() {
+    joinNumbers(inputArr,item)});
   parentDiv.appendChild(btn);
 }
 
@@ -90,12 +85,11 @@ function multiplication (total,num) {
   total = total * num;
   return total;
 }
-function division   (total,num) {
+function division (total,num) {
   total = total / num;
   return total;
 }
 
-// Might be incorrect
 function clearNumbers ()  {
       inputArr = [];
       num = "0";
@@ -103,9 +97,15 @@ function clearNumbers ()  {
       operator = null;
       return displayDiv.textContent = num,total,operator;
 }
-
-//if (operator === "="){operate();} else {alert("Whoops!")} // Uncaught ReferenceError: operator is not defined
+function joinNumbers(inputArr,item){
+  inputArr.push(item)
+  num = inputArr
+    .join()
+    .replace(/,/g, '')
+  return displayDiv.textContent = num;
+}
 function operate  (num,operator,total) {
+  Number(num);
   if (operator === "+") {
     addition(num,total);
   }
@@ -117,5 +117,8 @@ function operate  (num,operator,total) {
   }
   else if (operator === "*"){
     multiplication(num,total);
-  }// else {alert("Whoops!")}
+  } 
+  else {
+    alert("Whoops!")
+  }
 }
