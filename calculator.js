@@ -54,6 +54,7 @@ function createDigitBtn(item, parentDiv) {
   btn.classList.add("number-button");
   /* Collects number by click.*/
   item === "C" ? btn.addEventListener("click", clearNumbers)
+  // && btn.classList.add("clear-button")
   : item === "." ? btn.addEventListener("click", function() {
     //disable "." input after it has happened once.
     joinNumbers(inputArr,item)}) 
