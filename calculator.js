@@ -9,13 +9,16 @@ const roundingPlace = 5;
 
 const displayContainer = document.createElement("SECTION");
 displayContainer.classList.add("display-container");
+
 const displayDiv = document.createElement("DIV");
-  displayDiv.textContent = num;
-  displayContainer.appendChild(displayDiv);
+displayDiv.classList.add("display-div");
+displayDiv.textContent = num;
+displayContainer.appendChild(displayDiv);
 document.body.appendChild(displayContainer);
 
 generateInputContainer();
 operate();
+
 function generateInputContainer() {
   const inputContainer = document.createElement("SECTION");
   inputContainer.classList.add("input-container");
@@ -65,8 +68,7 @@ function createOperatorBtn(item, parentDiv) {
   btn.classList.add("operator-button");
   btn.addEventListener("click", function(){
     console.log(item);
-    operator = item;
-  })
+    joinNumbers(inputArr,item)});
   parentDiv.appendChild(btn);
 }
 
@@ -105,12 +107,14 @@ function joinNumbers(inputArr,item){
   return displayDiv.textContent = num;
 }
 function operate  (operator,total,num,) {
+  const isValidOperator = "+"||"-"||"/"||"*"||"="||null
   Number(num);
   Number(total);
-  operator === "+" ?   addition(total,num)
+  operator ===   "+" ? addition(total,num)
   : operator === "-" ? subtraction(num,total)
   : operator === "/" ? division(num,total)
   : operator === "*" ? multiplication(num,total)
-  : operator !== "+"||"-"||"/"||"*"||"="||null
-    alert("Whoops! Invalid operator.");
+  : operator === "=" ? console.log("Do the math.")
+  : operator !== isValidOperator ?
+    console.log("That doesn't belong there.") : console.log("Whoops! Problem with the operate function.");
   }
