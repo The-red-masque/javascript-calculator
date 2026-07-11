@@ -3,7 +3,7 @@ let operators = ["*", "/", "-", "+", "="];
 let inputArr=[];
 let num=0;
 let total=0;
-let operator;
+let operator = null;
 
 const roundingPlace = 5;
 
@@ -15,7 +15,7 @@ const displayDiv = document.createElement("DIV");
 document.body.appendChild(displayContainer);
 
 generateInputContainer();
-
+operate();
 function generateInputContainer() {
   const inputContainer = document.createElement("SECTION");
   inputContainer.classList.add("input-container");
@@ -87,13 +87,13 @@ function multiplication (total,num) {
 }
 function division (total,num) {
   total = total / num;
-  return total;
+  return displayContainerDiv.textContent = total;
 }
 
 function clearNumbers ()  {
       inputArr = [];
-      num = "0";
-      total = "0";
+      num = 0;
+      total = 0;
       operator = null;
       return displayDiv.textContent = num,total,operator;
 }
@@ -104,21 +104,13 @@ function joinNumbers(inputArr,item){
     .replace(/,/g, '')
   return displayDiv.textContent = num;
 }
-function operate  (num,operator,total) {
+function operate  (operator,total,num,) {
   Number(num);
-  if (operator === "+") {
-    addition(num,total);
+  Number(total);
+  operator === "+" ?   addition(total,num)
+  : operator === "-" ? subtraction(num,total)
+  : operator === "/" ? division(num,total)
+  : operator === "*" ? multiplication(num,total)
+  : operator !== "+"||"-"||"/"||"*"||"="||null
+    alert("Whoops! Invalid operator.");
   }
-  else if (operator === "-"){
-    subtraction(num,total);
-  }
-  else if (operator === "/") {
-    division(num,total);
-  }
-  else if (operator === "*"){
-    multiplication(num,total);
-  } 
-  else {
-    alert("Whoops!")
-  }
-}
