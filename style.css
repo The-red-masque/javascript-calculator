@@ -27,6 +27,10 @@ body {
   gap:1%;
   margin:10px;
 }
+.display-div {
+  color:black;
+  background:lightgray; /* Only green yellow for now. */
+}
 .digit-container {
   /* To the left */
   display:flex;
