@@ -51,7 +51,7 @@ function generateOperatorButtons(inputContainer) {
 function createDigitBtn(item, parentDiv) {
   const btn = document.createElement("BUTTON");
   btn.textContent=item;
-  btn.classList.add("number-button");
+  item === "C" ? btn.classList.add("clear-button") : btn.classList.add("number-button");
   /* Collects number by click.*/
   item === "C" ? btn.addEventListener("click", clearNumbers)
   // && btn.classList.add("clear-button")
