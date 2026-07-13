@@ -51,7 +51,9 @@ function generateOperatorButtons(inputContainer) {
 function createDigitBtn(item, parentDiv) {
   const btn = document.createElement("BUTTON");
   btn.textContent=item;
-  item === "C" ? btn.classList.add("clear-button") : btn.classList.add("number-button");
+  item === "C" ? btn.classList.add("clear-button") 
+  : item === "." ? btn.classList.add("decimal-button") // Visually the same as number button.
+  : btn.classList.add("number-button");
   item === "C" ? btn.addEventListener("click", clearNumbers)
   : item === "." ? btn.addEventListener("click", function() {
     joinNumbers(inputArr,item)
@@ -97,6 +99,7 @@ function clearNumbers ()  {
       num = 0;
       total = 0;
       operator = null;
+      document.querySelector(".decimal-button").disabled = "";
       return displayDiv.textContent = num,total,operator;
 }
 function joinNumbers(inputArr,item){
@@ -106,6 +109,7 @@ function joinNumbers(inputArr,item){
     .replace(/,/g, '')
   return displayDiv.textContent = num;
 }
+
 function operate  (operator,total,num,) {
   const isValidOperator = "+"||"-"||"/"||"*"||"="||null
   Number(num);
