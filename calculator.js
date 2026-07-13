@@ -52,12 +52,11 @@ function createDigitBtn(item, parentDiv) {
   const btn = document.createElement("BUTTON");
   btn.textContent=item;
   item === "C" ? btn.classList.add("clear-button") : btn.classList.add("number-button");
-  /* Collects number by click.*/
   item === "C" ? btn.addEventListener("click", clearNumbers)
-  // && btn.classList.add("clear-button")
   : item === "." ? btn.addEventListener("click", function() {
-    //disable "." input after it has happened once.
-    joinNumbers(inputArr,item)}) 
+    joinNumbers(inputArr,item)
+    btn.disabled = true;
+  }) 
   : btn.addEventListener("click", function() {
     joinNumbers(inputArr,item)});
   parentDiv.appendChild(btn);
