@@ -2,8 +2,8 @@ let numpad = ["9", "8", "7", "6", "5", "4", "3", "2", "1", "0", ".", "C"];
 let operators = ["*", "/", "-", "+", "="];
 let inputArr=[];
 let num=0;
-let total=0;
 let operator = null;
+let total = 0;
 
 const roundingPlace = 5;
 
@@ -52,7 +52,7 @@ function createDigitBtn(item, parentDiv) {
   const btn = document.createElement("BUTTON");
   btn.textContent=item;
   item === "C" ? btn.classList.add("clear-button") 
-  : item === "." ? btn.classList.add("decimal-button") // Visually the same as number button.
+  : item === "." ? btn.classList.add("decimal-button") // Visually the same as number button. Allows for customization and querySelector.
   : btn.classList.add("number-button");
   item === "C" ? btn.addEventListener("click", clearNumbers)
   : item === "." ? btn.addEventListener("click", function() {
@@ -77,21 +77,33 @@ function createOperatorBtn(item, parentDiv) {
 // Rounding logic
 // const roundingLogic = (Math.round(newNumber*(10**roundingPlace)))/(10**roundingPlace);
 
-function addition (total,num) {
-  total = total + num;
-  return total;
+function addition (inputArr) {
+  inputArr.split("+");
+  const a = Number(inputArr.at(0));
+  const b = Number(inputArr.at(1));
+  num = a + b;
+  return displayContainerDiv.textContent = num;
 }
-function subtraction (total,num) {
-  total = total - num;
-  return total;
+function subtraction (inputArr) {
+  inputArr.split("-");
+    const a = Number(inputArr.at(0));
+  const b = Number(inputArr.at(1));
+  num = a - b;
+  return displayContainerDiv.textContent = num;
 }
-function multiplication (total,num) {
-  total = total * num;
-  return total;
+function multiplication (inputArr) {
+  inputArr.split("*");
+  const a = Number(inputArr.at(0));
+  const b = Number(inputArr.at(1));
+  num = a * b;
+  return displayContainerDiv.textContent = num;
 }
-function division (total,num) {
-  total = total / num;
-  return displayContainerDiv.textContent = total;
+function division (inputArr) {
+  inputArr.split("/");
+  const a = Number(inputArr.at(0));
+  const b = Number(inputArr.at(1));
+  num = a / b;
+  return displayContainerDiv.textContent = num;
 }
 
 function clearNumbers ()  {
@@ -110,14 +122,14 @@ function joinNumbers(inputArr,item){
   return displayDiv.textContent = num;
 }
 
-function operate  (operator,total,num,) {
+function operate  (operator,inputArr) {
   const isValidOperator = "+"||"-"||"/"||"*"||"="||null
-  Number(num);
-  Number(total);
-  operator ===   "+" ? addition(total,num)
-  : operator === "-" ? subtraction(num,total)
-  : operator === "/" ? division(num,total)
-  : operator === "*" ? multiplication(num,total)
+  // let a = Number(num);
+  // let b = Number(1);
+  operator ===   "+" ? addition(a,b)
+  : operator === "-" ? subtraction(a,b)
+  : operator === "/" ? division(a,b)
+  : operator === "*" ? multiplication(a,b)
   : operator === "=" ? console.log("Do the math.")
   : operator !== isValidOperator ?
     console.log("That doesn't belong there.") : console.log("Whoops! Problem with the operate function.");
