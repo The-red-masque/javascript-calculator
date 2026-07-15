@@ -67,7 +67,6 @@ function createOperatorBtn(item, parentDiv) {
   btn.classList.add("operator-button");
   item === "=" ? btn.addEventListener("click", operate)
   : btn.addEventListener("click", function(){
-    console.log(item);
     joinNumbers(inputArr,item)});
   parentDiv.appendChild(btn);
 }
@@ -112,12 +111,12 @@ function division (num) {
 }
 
 function clearNumbers ()  {
-      inputArr = [];
-      num = 0;
-      total = 0;
-      operator = null;
-      document.querySelector(".decimal-button").disabled = "";
-      return displayDiv.textContent = num,total,operator;
+  inputArr = [];
+  num = 0;
+  total = 0;
+  operator = null;
+  document.querySelector(".decimal-button").disabled = "";
+  return displayDiv.textContent = num,total,operator;
 }
 function joinNumbers(inputArr,item){
   inputArr.push(item)
@@ -127,14 +126,12 @@ function joinNumbers(inputArr,item){
   return displayDiv.textContent = num;
 }
 
-function operate  (num) {
+function operate  () {
   // const isValidOperator = "+"||"-"||"/"||"*"||"="||null
   num = String(num);
-  num.includes("+") ? addition(num)
+  num.includes("+")   ? addition(num)
   : num.includes("-") ? subtraction(num)
   : num.includes("/") ? division(num)
   : num.includes("*") ? multiplication(num)
-  : console.log("This is a for later problem");
-  // : operator !== isValidOperator ?
-    // console.log("That doesn't belong there.") : console.log("Whoops! Problem with the operate function.");
+  : console.log("Whoops! That's not supported.");
   }
