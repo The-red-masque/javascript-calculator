@@ -2,8 +2,7 @@ let numpad = ["9", "8", "7", "6", "5", "4", "3", "2", "1", "0", ".", "C"];
 let operators = ["*", "/", "-", "+", "="];
 let inputArr=[];
 let num=0;
-let operator = null;
-let total = 0;
+// let operator = null;
 
 const roundingPlace = 5;
 
@@ -17,7 +16,6 @@ displayContainer.appendChild(displayDiv);
 document.body.appendChild(displayContainer);
 
 generateInputContainer();
-operate();
 
 function generateInputContainer() {
   const inputContainer = document.createElement("SECTION");
@@ -47,12 +45,11 @@ function generateOperatorButtons(inputContainer) {
   inputContainer.appendChild(operatorDiv);
 }
 
-
 function createDigitBtn(item, parentDiv) {
   const btn = document.createElement("BUTTON");
   btn.textContent=item;
   item === "C" ? btn.classList.add("clear-button") 
-  : item === "." ? btn.classList.add("decimal-button") // Visually the same as number button. Allows for customization and querySelector.
+  : item === "." ? btn.classList.add("decimal-button")
   : btn.classList.add("number-button");
   item === "C" ? btn.addEventListener("click", clearNumbers)
   : item === "." ? btn.addEventListener("click", function() {
@@ -68,7 +65,8 @@ function createOperatorBtn(item, parentDiv) {
   const btn = document.createElement("BUTTON");
   btn.textContent=item;
   btn.classList.add("operator-button");
-  btn.addEventListener("click", function(){
+  item === "=" ? btn.addEventListener("click", operate)
+  : btn.addEventListener("click", function(){
     console.log(item);
     joinNumbers(inputArr,item)});
   parentDiv.appendChild(btn);
@@ -77,33 +75,40 @@ function createOperatorBtn(item, parentDiv) {
 // Rounding logic
 // const roundingLogic = (Math.round(newNumber*(10**roundingPlace)))/(10**roundingPlace);
 
-function addition (inputArr) {
-  inputArr.split("+");
+function addition (num) {
+  console.log(num);
+  inputArr = num.split("+");
   const a = Number(inputArr.at(0));
+  console.log(a);
   const b = Number(inputArr.at(1));
+  console.log(b);
   num = a + b;
-  return displayContainerDiv.textContent = num;
+  console.log(num);
+  return displayDiv.textContent = num;
 }
-function subtraction (inputArr) {
-  inputArr.split("-");
+function subtraction (num) {
+  console.log(num);
+  inputArr = num.split("-");
     const a = Number(inputArr.at(0));
   const b = Number(inputArr.at(1));
   num = a - b;
-  return displayContainerDiv.textContent = num;
+  return displayDiv.textContent = num;
 }
-function multiplication (inputArr) {
-  inputArr.split("*");
+function multiplication (num) {
+  console.log(num);
+  inputArr = num.split("*");
   const a = Number(inputArr.at(0));
   const b = Number(inputArr.at(1));
   num = a * b;
-  return displayContainerDiv.textContent = num;
+  return displayDiv.textContent = num;
 }
-function division (inputArr) {
-  inputArr.split("/");
+function division (num) {
+  console.log(num);
+  inputArr = num.split("/");
   const a = Number(inputArr.at(0));
   const b = Number(inputArr.at(1));
   num = a / b;
-  return displayContainerDiv.textContent = num;
+  return displayDiv.textContent = num;
 }
 
 function clearNumbers ()  {
@@ -122,15 +127,14 @@ function joinNumbers(inputArr,item){
   return displayDiv.textContent = num;
 }
 
-function operate  (operator,inputArr) {
-  const isValidOperator = "+"||"-"||"/"||"*"||"="||null
-  // let a = Number(num);
-  // let b = Number(1);
-  operator ===   "+" ? addition(a,b)
-  : operator === "-" ? subtraction(a,b)
-  : operator === "/" ? division(a,b)
-  : operator === "*" ? multiplication(a,b)
-  : operator === "=" ? console.log("Do the math.")
-  : operator !== isValidOperator ?
-    console.log("That doesn't belong there.") : console.log("Whoops! Problem with the operate function.");
+function operate  (num) {
+  // const isValidOperator = "+"||"-"||"/"||"*"||"="||null
+  num = String(num);
+  num.includes("+") ? addition(num)
+  : num.includes("-") ? subtraction(num)
+  : num.includes("/") ? division(num)
+  : num.includes("*") ? multiplication(num)
+  : console.log("This is a for later problem");
+  // : operator !== isValidOperator ?
+    // console.log("That doesn't belong there.") : console.log("Whoops! Problem with the operate function.");
   }
