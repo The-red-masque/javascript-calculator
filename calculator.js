@@ -1,4 +1,4 @@
-let numpad = ["9", "8", "7", "6", "5", "4", "3", "2", "1", "0", ".", "C"];
+let numpad = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, ".", "C"];
 let operators = ["*", "/", "-", "+", "="];
 let inputArr=[];
 let num=0;
@@ -53,11 +53,12 @@ function createDigitBtn(item, parentDiv) {
   : btn.classList.add("number-button");
   item === "C" ? btn.addEventListener("click", clearNumbers)
   : item === "." ? btn.addEventListener("click", function() {
-    joinNumbers(inputArr,item)
+    joinArr(inputArr,item)
     btn.disabled = true;
   }) 
   : btn.addEventListener("click", function() {
-    joinNumbers(inputArr,item)});
+    joinArr(inputArr,item)
+  });
   parentDiv.appendChild(btn);
 }
 
@@ -67,7 +68,10 @@ function createOperatorBtn(item, parentDiv) {
   btn.classList.add("operator-button");
   item === "=" ? btn.addEventListener("click", operate)
   : btn.addEventListener("click", function(){
-    joinNumbers(inputArr,item)});
+    joinArr(inputArr,item)
+  decimalBtn = document.querySelector(".decimal-button");
+  decimalBtn.disabled ="";
+  });
   parentDiv.appendChild(btn);
 }
 
@@ -75,37 +79,35 @@ function createOperatorBtn(item, parentDiv) {
 // const roundingLogic = (Math.round(newNumber*(10**roundingPlace)))/(10**roundingPlace);
 
 function addition (num) {
-  console.log(num);
   inputArr = num.split("+");
   const a = Number(inputArr.at(0));
-  console.log(a);
   const b = Number(inputArr.at(1));
-  console.log(b);
   num = a + b;
   console.log(num);
   return displayDiv.textContent = num;
 }
+
 function subtraction (num) {
-  console.log(num);
   inputArr = num.split("-");
-    const a = Number(inputArr.at(0));
+  const a = Number(inputArr.at(0));
   const b = Number(inputArr.at(1));
   num = a - b;
   return displayDiv.textContent = num;
 }
+
 function multiplication (num) {
-  console.log(num);
   inputArr = num.split("*");
   const a = Number(inputArr.at(0));
   const b = Number(inputArr.at(1));
   num = a * b;
   return displayDiv.textContent = num;
 }
+
 function division (num) {
   console.log(num);
   inputArr = num.split("/");
   const a = Number(inputArr.at(0));
-  const b = Number(inputArr.at(1));
+  const b = Number(inputArr.at(1)); // a and b
   num = a / b;
   return displayDiv.textContent = num;
 }
@@ -118,13 +120,15 @@ function clearNumbers ()  {
   document.querySelector(".decimal-button").disabled = "";
   return displayDiv.textContent = num,total,operator;
 }
-function joinNumbers(inputArr,item){
+
+function joinArr(inputArr,item){
   inputArr.push(item)
   num = inputArr
     .join()
     .replace(/,/g, '')
   return displayDiv.textContent = num;
 }
+
 
 function operate  () {
   // const isValidOperator = "+"||"-"||"/"||"*"||"="||null
@@ -133,5 +137,5 @@ function operate  () {
   : num.includes("-") ? subtraction(num)
   : num.includes("/") ? division(num)
   : num.includes("*") ? multiplication(num)
-  : console.log("Whoops! That's not supported.");
+  : alert("Whoops! There's no math to do.");
   }
