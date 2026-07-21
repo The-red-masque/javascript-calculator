@@ -11,7 +11,9 @@ A calculator using JavaScript, html, and css.
     - there is a button with a string of the operator.
     - the button has class: operator-button
   - $input \iff clickOnButton \lor keyPress$.
+
 - If there is already an equation of (a+b) but equals has not been pressed and instead a different operator ex (a+b+c) treat as (a+b) + c
+- Add rounding.
 
 ## Bonus
 

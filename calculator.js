@@ -118,7 +118,7 @@ function division (num) {
   inputArr = num.split("/");
   const a = Number(inputArr.at(0));
   const b = Number(inputArr.at(1)); // a and b
-  num = (a / b);  
+  b===0?alert("We don't divide by zero in these parts."):num = (a / b);  
   num = Math.round(num*(10**5))/(10**5);
   return inputArr = [num], displayDiv.textContent = num;
 }
