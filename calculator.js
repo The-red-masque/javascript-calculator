@@ -83,15 +83,12 @@ function createOperatorBtn(item, parentDiv) {
   parentDiv.appendChild(btn);
 }
 
-// Rounding logic
-
-
 function addition (num) {
   inputArr = num.split("+");
   const a = Number(inputArr.at(0));
   const b = Number(inputArr.at(1));
   num = (a + b);
-  num = Math.round(num*(10**5))/(10**5);;
+  num = Math.round(num*(10**5))/(10**5);
   return inputArr = [num], displayDiv.textContent = num;
 }
 
@@ -100,7 +97,7 @@ function subtraction (num) {
   const a = Number(inputArr.at(0));
   const b = Number(inputArr.at(1));
   num = (a - b);
-  num = Math.round(num*(10**5))/(10**5);;
+  num = Math.round(num*(10**5))/(10**5);
   return inputArr = [num], displayDiv.textContent = num;
 }
 
@@ -114,10 +111,9 @@ function multiplication (num) {
 }
 
 function division (num) {
-  
   inputArr = num.split("/");
   const a = Number(inputArr.at(0));
-  const b = Number(inputArr.at(1)); // a and b
+  const b = Number(inputArr.at(1));
   if(b===0){ alert("We don't divide by zero in these parts."); num = 0;} else{ num = (a / b);}  
   num = Math.round(num*(10**5))/(10**5);
   return inputArr = [num], displayDiv.textContent = num;
@@ -147,3 +143,12 @@ function operate  () {
   : num.includes("*") ? multiplication(num)
   : alert("Whoops! There's no math to do.");
   }
+// Add eventListener for the equals button that clears past numbers and adds the pressed number.
+// Ex. result of previous operation: 19
+// Press button 9, clears 19 and rewrites num as 9.
+// btn.addEventListener("click", clearNumbers, item)?
+function newEquation (item,numpad){
+  numpad.forEach (item => {
+    clearNumbers();
+  })
+}
